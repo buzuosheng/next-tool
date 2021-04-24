@@ -14,9 +14,10 @@ const DateConvert: React.FC = () => {
   const [timevisible, setTimevisible] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setNow(new Date())
     }, 1000)
+    return clearTimeout(timer)
   })
 
   useEffect(() => {
@@ -31,9 +32,7 @@ const DateConvert: React.FC = () => {
     () =>
       setDateRes(
         date
-          ? dayjs(new Date(parseInt(date) * 1000)).format(
-              'YYYY-MM-DD HH:mm:ss'
-            )
+          ? dayjs(new Date(parseInt(date) * 1000)).format('YYYY-MM-DD HH:mm:ss')
           : ''
       ),
     [date]
@@ -44,19 +43,27 @@ const DateConvert: React.FC = () => {
   }, [time])
 
   useEffect(() => {
-    setTimeout(() => setTimevisible(false), 3000)
+    const timer = setTimeout(() => setTimevisible(false), 3000)
+    return clearTimeout(timer)
   }, [timevisible])
 
   useEffect(() => {
-    setTimeout(() => setDatevisible(false), 3000)
+    const timer = setTimeout(() => setDatevisible(false), 3000)
+    return clearTimeout(timer)
   }, [datevisible])
 
   return (
     <div className="border w-5/6 my-4 py-4 px-10 rounded-lg bg-white flex flex-col items-center justify-center">
-      <div className="text-2xl text-center mt-8 text-green-500">
+      <div
+        suppressHydrationWarning
+        className="text-2xl text-center mt-8 text-green-500"
+      >
         当前的时间戳(秒)：{Math.round(now.getTime() / 1000)}
       </div>
-      <div className="text-2xl text-center mt-8 text-green-500">
+      <div
+        suppressHydrationWarning
+        className="text-2xl text-center mt-8 text-green-500"
+      >
         当前的北京时间：{dayjs(now).format('YYYY-MM-DD HH:mm:ss')}
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-center mt-8">
