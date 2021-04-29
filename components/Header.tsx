@@ -18,7 +18,11 @@ const Header = () => {
           </a>
         </Link>
       </div>
-      <div className="cursor-pointer">关于作者</div>
+      <div className="cursor-pointer">
+        <Link href="https://github.com/buzuosheng">
+          <a>关于作者</a>
+        </Link>
+      </div>
     </header>
   )
 }
