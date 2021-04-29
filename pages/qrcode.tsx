@@ -1,8 +1,5 @@
 import App from '../components/App'
 import Qr from '../components/Qr'
-import QRR from '../components/QRR'
-import QRL from '../components/QRL'
-import Slider, { Range } from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
 const Qrcode = () => (
