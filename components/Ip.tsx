@@ -42,9 +42,9 @@ const IpSearch: React.FC = () => {
   const getData = async () => {
     const res = await axios.get(
       'http://ip-api.com/json/?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query',
-      {
-        withCredentials: true
-      }
+      // {
+      //   withCredentials: true
+      // }
     )
     setCip(res.data.query)
     setAdd(res.data.country + ' ' + res.data.regionName)

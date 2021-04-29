@@ -1,7 +1,7 @@
 import Binary from '../components/Binary'
 import App from '../components/App'
 
-const Crontab = () => (
+const Binaryc = () => (
   <App
     title="常用进制转换"
     description="使用在线工具对数字进行常用的进制转换"
@@ -11,4 +11,4 @@ const Crontab = () => (
   </App>
 )
 
-export default Crontab
+export default Binaryc
