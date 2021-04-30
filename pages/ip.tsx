@@ -9,10 +9,10 @@ const Ip = () => (
     keywords="ip, ip查询, 工具, 在线工具, 前端, 程序员, 武器库"
   >
     <Helmet>
-      <meta
+      {/* <meta
         http-equiv="Content-Security-Policy"
         content="upgrade-insecure-requests"
-      />
+      /> */}
     </Helmet>
     <IpSearch />
   </App>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-// import useSWR from 'swr'
+import useSWR from 'swr'
 import axios from 'axios'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
@@ -10,62 +10,20 @@ const IpSearch: React.FC = () => {
 
   const [ip, setIp] = useState('')
   const [cip, setCip] = useState('')
-  const [cid, setCid] = useState('')
-  const [add, setAdd] = useState('')
-  const [isp, setIsp] = useState('')
-  const [reverse, setReverse] = useState('')
   const [status, setStatus] = useState('')
 
-  // const ipToNum = (ip: string) => {
-  //   if (ip) {
-  //     const n = ip.split('.')
-  //     const num =
-  //       parseInt(n[0]) * 256 * 256 * 256 +
-  //       parseInt(n[1]) * 256 * 256 +
-  //       parseInt(n[2]) * 256 +
-  //       parseInt(n[3])
-  //     return num
-  //   }
-  // }
-
-  useEffect(() => {
-    getData()
-  }, [])
-
-  // const getData = async () => {
-  //   const res = await fetch('http://pv.sohu.com/cityjson', {
-  //     mode: 'no-cors'
-  //   }).then((res) => res.text())
-  //   console.log(res)
-  // }
-
-  const getData = async () => {
-    const res = await axios.get(
-      'http://ip-api.com/json/?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query',
-      // {
-      //   withCredentials: true
-      // }
-    )
-    setCip(res.data.query)
-    setAdd(res.data.country + ' ' + res.data.regionName)
-    setCid(res.data.zip)
-    setIsp(res.data.isp)
-    setReverse(res.data.reverse)
-    setStatus(res.data.status)
-  }
+  const { data } = useSWR(
+    'http://ip-api.com/json/?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query'
+  )
 
   const getIp = async () => {
     const res = await axios.get(
-      `http://ip-api.com/json/${ip}?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query`,
+      `http://ip-api.com/json/${ip}?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query`
       // {
       //   withCredentials: true
       // }
     )
     setCip(res.data.query)
-    setAdd(res.data.country + ' ' + res.data.regionName)
-    setCid(res.data.zip)
-    setIsp(res.data.isp)
-    setReverse(res.data.reverse)
     setStatus(res.data.status)
   }
 
@@ -107,6 +65,7 @@ const IpSearch: React.FC = () => {
         </button>
       </div>
       <div className="flex flex-col items-center justify-center">
+        {/* <img src="https://tool.lu/netcard/" alt="ip" width={300} height={126} /> */}
         <table className="table-fixed sm:w-96 text-md p-4 my-8">
           <thead>
             <tr>
@@ -122,7 +81,7 @@ const IpSearch: React.FC = () => {
                 ip地址
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {cip}
+                {data?.query}
               </td>
             </tr>
             <tr>
@@ -130,7 +89,7 @@ const IpSearch: React.FC = () => {
                 归属地
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {add == 'undefined undefined' ? '' : add}
+                {data?.country + data?.regionName == 'undefined undefined' ? '' : data?.country + data?.regionName}
               </td>
             </tr>
             <tr>
@@ -138,7 +97,7 @@ const IpSearch: React.FC = () => {
                 邮编
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {cid}
+                {data?.zip}
               </td>
             </tr>
             <tr>
@@ -146,7 +105,7 @@ const IpSearch: React.FC = () => {
                 isp
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {isp}
+                {data?.isp}
               </td>
             </tr>
             <tr>
@@ -154,7 +113,7 @@ const IpSearch: React.FC = () => {
                 reverse
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {reverse}
+                {data?.reverse}
               </td>
             </tr>
           </tbody>
