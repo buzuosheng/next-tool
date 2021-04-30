@@ -12,19 +12,18 @@ const IpSearch: React.FC = () => {
   const [cip, setCip] = useState('')
   const [status, setStatus] = useState('')
 
+  const pkg = useSWR('https://api.npms.io/v2/package/react')
+  console.log(pkg)
+
   const { data } = useSWR(
     'http://ip-api.com/json/?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query'
   )
 
-  console.log('结果')
-  console.log(data)
+  const add = data?.country + data?.regionName
 
   const getIp = async () => {
     const res = await axios.get(
       `http://ip-api.com/json/${ip}?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query`
-      // {
-      //   withCredentials: true
-      // }
     )
     setCip(res.data.query)
     setStatus(res.data.status)
@@ -92,7 +91,7 @@ const IpSearch: React.FC = () => {
                 归属地
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data?.country + data?.regionName == 'undefined undefined' ? '' : data?.country + data?.regionName}
+                {'' || add}
               </td>
             </tr>
             <tr>
