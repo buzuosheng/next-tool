@@ -16,6 +16,9 @@ const IpSearch: React.FC = () => {
     'http://ip-api.com/json/?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query'
   )
 
+  console.log('结果')
+  console.log(data)
+
   const getIp = async () => {
     const res = await axios.get(
       `http://ip-api.com/json/${ip}?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query`
