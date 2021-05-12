@@ -5,15 +5,12 @@ import axios from 'axios'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 
-const IpSearch: React.FC = () => {
+const IpSearch = ({initIp}) => {
   const [visible, setVisible] = useState(false)
 
   const [ip, setIp] = useState('')
   const [cip, setCip] = useState('')
   const [status, setStatus] = useState('')
-
-  const pkg = useSWR('https://api.npms.io/v2/package/react')
-  console.log(pkg)
 
   const { data } = useSWR(
     'http://ip-api.com/json/?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query'
