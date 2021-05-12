@@ -6,6 +6,8 @@ import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 
 const IpSearch = ({initIp}) => {
+
+  console.log(initIp)
   const [visible, setVisible] = useState(false)
 
   const [ip, setIp] = useState('')
