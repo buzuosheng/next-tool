@@ -1,38 +1,19 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import useSWR from 'swr'
-import axios from 'axios'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 
-const IpSearch = ({initIp}) => {
-
-  console.log(initIp)
+const IpSearch = ({ initIp }) => {
   const [visible, setVisible] = useState(false)
+  const data = initIp
 
   const [ip, setIp] = useState('')
-  const [cip, setCip] = useState('')
-  const [status, setStatus] = useState('')
 
-  const { data } = useSWR(
-    'http://ip-api.com/json/?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query'
-  )
-
-  const add = data?.country + data?.regionName
-
-  const getIp = async () => {
-    const res = await axios.get(
-      `http://ip-api.com/json/${ip}?lang=zh-CN&fields=status,zip,country,regionName,isp,reverse,query`
-    )
-    setCip(res.data.query)
-    setStatus(res.data.status)
-  }
-
-  useEffect(() => {
-    if (status == 'fail') {
-      setVisible(true)
-    }
-  }, [cip])
+  // useEffect(() => {
+  //   if (status == 'fail') {
+  //     setVisible(true)
+  //   }
+  // }, [cip])
 
   useEffect(() => {
     setTimeout(() => setVisible(false), 3000)
@@ -59,7 +40,7 @@ const IpSearch = ({initIp}) => {
           />
         </Tippy>
         <button
-          onClick={getIp}
+          // onClick={getIp}
           className="bg-green-400 text-white border font-semibold mt-2 w-24 h-10 shadow-md rounded-lg active:bg-green-600 focus:outline-none"
         >
           查询
@@ -90,7 +71,7 @@ const IpSearch = ({initIp}) => {
                 归属地
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {'' || add}
+                {'' || data?.country + data?.regionName}
               </td>
             </tr>
             <tr>
