@@ -5,7 +5,6 @@ import 'tippy.js/dist/tippy.css'
 
 const IpSearch = ({ initIp }) => {
   const [visible, setVisible] = useState(false)
-  console.log(initIp)
   const data = initIp
 
   const [ip, setIp] = useState('')
@@ -64,7 +63,7 @@ const IpSearch = ({ initIp }) => {
                 ip地址
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data?.query}
+                {data.message ? '无效请求' : data?.query}
               </td>
             </tr>
             <tr>
@@ -72,7 +71,7 @@ const IpSearch = ({ initIp }) => {
                 归属地
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {'' || data?.country + data?.regionName}
+                {data.message ? '' : data?.country + data?.regionName}
               </td>
             </tr>
             <tr>

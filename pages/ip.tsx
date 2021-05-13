@@ -17,7 +17,7 @@ export default Ip
 
 export async function getServerSideProps(context) {
   const ip = await axios(
-    'http://ip-api.com/json/fields=status,message,country,regionName,city,zip,isp,query'
+    'http://ip-api.com/json/?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN'
   )
   const initIp = await ip.data
   return { props: { initIp } }
