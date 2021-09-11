@@ -1,6 +1,6 @@
 import IpSearch from '../components/Ip'
 import App from '../components/App'
-import { Helmet } from 'react-helmet'
+import { GetServerSidePropsContext } from 'next'
 import axios from 'axios'
 
 const Ip = ({ initIp }) => (
@@ -15,7 +15,9 @@ const Ip = ({ initIp }) => (
 
 export default Ip
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  // console.log(context.req.headers)
+  console.log(context.req.headers['X-Forwarded-For'])
   const ip = await axios(
     'http://ip-api.com/json/?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN'
   )

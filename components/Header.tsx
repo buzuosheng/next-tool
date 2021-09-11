@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
+import About from './About'
 
 const Header = () => {
   return (
@@ -18,11 +19,7 @@ const Header = () => {
           </a>
         </Link>
       </div>
-      <div className="cursor-pointer">
-        <Link href="https://github.com/buzuosheng">
-          <a>关于作者</a>
-        </Link>
-      </div>
+      <About />
     </header>
   )
 }

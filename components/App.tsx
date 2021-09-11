@@ -30,6 +30,7 @@ const App = ({ children, title = '', description = '', keywords = '' }) => {
       </Head>
       <Header />
       {children}
+      <Footer/>
     </div>
   )
 }

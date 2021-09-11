@@ -106,7 +106,7 @@ const Index = () => {
           </Link>
         </div>
       </App>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
