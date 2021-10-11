@@ -3,16 +3,17 @@ import { useState, useEffect } from 'react'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 
-const IpSearch = () => {
+const IpSearch = (props) => {
+  const data = props.msg
   const [visible, setVisible] = useState(false)
 
   const [ip, setIp] = useState('')
 
-  // useEffect(() => {
-  //   if (status == 'fail') {
-  //     setVisible(true)
-  //   }
-  // }, [cip])
+  useEffect(() => {
+    if (data.status == 'fail') {
+      setVisible(true)
+    }
+  })
 
   useEffect(() => {
     setTimeout(() => setVisible(false), 3000)
@@ -46,7 +47,6 @@ const IpSearch = () => {
         </button>
       </div>
       <div className="flex flex-col items-center justify-center">
-        {/* <img src="https://tool.lu/netcard/" alt="ip" width={300} height={126} /> */}
         <table className="table-fixed sm:w-96 text-md p-4 my-8">
           <thead>
             <tr>
@@ -62,7 +62,7 @@ const IpSearch = () => {
                 ip地址
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {/* {data.message ? '无效请求' : data?.query} */}
+                {data.message ? '无效请求' : data?.query}
               </td>
             </tr>
             <tr>
@@ -70,7 +70,7 @@ const IpSearch = () => {
                 归属地
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {/* {data.message ? '' : data?.country + data?.regionName} */}
+                {data.message ? '' : data?.country + data?.regionName}
               </td>
             </tr>
             <tr>
@@ -78,7 +78,7 @@ const IpSearch = () => {
                 邮编
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {/* {data?.zip} */}
+                {data?.zip}
               </td>
             </tr>
             <tr>
@@ -86,7 +86,7 @@ const IpSearch = () => {
                 isp
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {/* {data?.isp} */}
+                {data?.isp}
               </td>
             </tr>
             <tr>
@@ -94,7 +94,7 @@ const IpSearch = () => {
                 reverse
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {/* {data?.reverse} */}
+                {data?.reverse}
               </td>
             </tr>
           </tbody>

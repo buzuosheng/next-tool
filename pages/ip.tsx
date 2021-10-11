@@ -4,7 +4,7 @@ import { GetServerSidePropsContext } from 'next'
 import axios from 'axios'
 
 const Ip = (props) => {
-  console.log('ip:', props)
+  console.log('ip:', props.msg)
   return (
     <App
       title="IP地址查询"
