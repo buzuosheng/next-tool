@@ -11,8 +11,7 @@ const Ip = (props) => {
       description="在线查询IP地址信息"
       keywords="ip, ip查询, 工具, 在线工具, 前端, 程序员, 武器库"
     >
-      {props.realIp}
-      {props.headers}
+      {props}
       {/* <IpSearch initIp={realIp} /> */}
     </App>
   )
