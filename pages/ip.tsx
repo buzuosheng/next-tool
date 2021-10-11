@@ -4,7 +4,7 @@ import { GetServerSidePropsContext } from 'next'
 import axios from 'axios'
 
 const Ip = (props) => {
-  console.log(props.realIp)
+  console.log(props)
   return (
     <App
       title="IP地址查询"
@@ -23,12 +23,9 @@ export default Ip
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   // console.log(context.req.headers)
   const realIp = context.req.headers['x-real-ip']
-  const headers = context.req.headers
-  console.log('x-real-ip', realIp)
-  console.log('headers', headers)
-  // const ip = await axios(
-  //   'http://ip-api.com/json/?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN'
-  // )
+  const datas = await axios(
+    `http://ip-api.com/json/${realIp}?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN`
+  )
   // const initIp = await ip.data
-  return { props: { realIp, headers } }
+  return { props: { datas } }
 }
