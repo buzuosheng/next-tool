@@ -17,10 +17,13 @@ import axios from 'axios'
 // }
 
 const Ip = (props) => {
-  ;<div>
-    <h1> IP</h1>
-    {props}
-  </div>
+  console.log(props)
+  return (
+    <div>
+      <h1> IP</h1>
+      {props}
+    </div>
+  )
 }
 
 export default Ip
