@@ -3,26 +3,16 @@ import App from '../components/App'
 import { GetServerSidePropsContext } from 'next'
 import axios from 'axios'
 
-// const Ip = (props) => {
-//   console.log(props)
-//   return (
-//     <App
-//       title="IP地址查询"
-//       description="在线查询IP地址信息"
-//       keywords="ip, ip查询, 工具, 在线工具, 前端, 程序员, 武器库"
-//     >
-//       <IpSearch initIp={realIp} />
-//     </App>
-//   )
-// }
-
 const Ip = (props) => {
   console.log(props)
   return (
-    <div>
-      <h1> IP</h1>
-      {props}
-    </div>
+    <App
+      title="IP地址查询"
+      description="在线查询IP地址信息"
+      keywords="ip, ip查询, 工具, 在线工具, 前端, 程序员, 武器库"
+    >
+      <IpSearch />
+    </App>
   )
 }
 

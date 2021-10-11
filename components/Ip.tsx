@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 
-const IpSearch = ({ initIp }) => {
+const IpSearch = () => {
   const [visible, setVisible] = useState(false)
-  const data = initIp
 
   const [ip, setIp] = useState('')
 
@@ -63,7 +62,7 @@ const IpSearch = ({ initIp }) => {
                 ip地址
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data.message ? '无效请求' : data?.query}
+                {/* {data.message ? '无效请求' : data?.query} */}
               </td>
             </tr>
             <tr>
@@ -71,7 +70,7 @@ const IpSearch = ({ initIp }) => {
                 归属地
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data.message ? '' : data?.country + data?.regionName}
+                {/* {data.message ? '' : data?.country + data?.regionName} */}
               </td>
             </tr>
             <tr>
@@ -79,7 +78,7 @@ const IpSearch = ({ initIp }) => {
                 邮编
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data?.zip}
+                {/* {data?.zip} */}
               </td>
             </tr>
             <tr>
@@ -87,7 +86,7 @@ const IpSearch = ({ initIp }) => {
                 isp
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data?.isp}
+                {/* {data?.isp} */}
               </td>
             </tr>
             <tr>
@@ -95,7 +94,7 @@ const IpSearch = ({ initIp }) => {
                 reverse
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data?.reverse}
+                {/* {data?.reverse} */}
               </td>
             </tr>
           </tbody>
