@@ -24,7 +24,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // console.log(context.req.headers)
   const realIp = context.req.headers['X-Forwarded-For']
   const headers = context.req.headers
-  console.log(realIp)
+  console.log('x-forwarded-for', realIp)
+  console.log('headers', headers)
   // const ip = await axios(
   //   'http://ip-api.com/json/?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN'
   // )
