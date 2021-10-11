@@ -62,7 +62,7 @@ const IpSearch = (props) => {
                 ip地址
               </td>
               <td className="border border-r-0 text-center overflow-hidden overflow-ellipsis font-medium text-green-500 px-4 py-2">
-                {data.message ? '无效请求' : data?.query}
+                {data.status === 'fail' ? '无效请求' : data?.query}
               </td>
             </tr>
             <tr>
