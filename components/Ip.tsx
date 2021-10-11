@@ -5,8 +5,8 @@ import 'tippy.js/dist/tippy.css'
 
 const IpSearch = (props) => {
   const data = props.msg
-  console.log(props)
-  console.log(data)
+  console.log('props', props)
+  console.log('data', data)
   const [visible, setVisible] = useState(false)
 
   const [ip, setIp] = useState('')
