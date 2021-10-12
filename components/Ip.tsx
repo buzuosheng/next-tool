@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
+import router from 'next/router'
 
 const IpSearch = (props) => {
   const data = props.props.msg
@@ -9,11 +10,11 @@ const IpSearch = (props) => {
 
   const [ip, setIp] = useState('')
 
-  useEffect(() => {
-    if (data.status == 'fail') {
-      setVisible(true)
-    }
-  })
+  // useEffect(() => {
+  //   if (data.status == 'fail') {
+  //     setVisible(true)
+  //   }
+  // })
 
   useEffect(() => {
     setTimeout(() => setVisible(false), 3000)
@@ -40,7 +41,7 @@ const IpSearch = (props) => {
           />
         </Tippy>
         <button
-          // onClick={getIp}
+          onClick={() => router.push(`./ip/${ip}`)}
           className="bg-green-400 text-white border font-semibold mt-2 w-24 h-10 shadow-md rounded-lg active:bg-green-600 focus:outline-none"
         >
           查询

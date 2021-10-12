@@ -1,5 +1,6 @@
-import IpSearch from '../components/Ip'
-import App from '../components/App'
+import IpSearch from '../../components/Ip'
+import App from '../../components/App'
+import router from 'next/router'
 import { GetServerSidePropsContext } from 'next'
 import axios from 'axios'
 
