@@ -19,11 +19,10 @@ const Ip = (props) => {
 export default Ip
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const realIp = context.query
+  const realIp = context.query.ip
   const datas = await axios(
     `http://ip-api.com/json/${realIp}?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN`
   )
   const msg = datas.data
-  console.log(msg)
   return { props: { msg } }
 }
