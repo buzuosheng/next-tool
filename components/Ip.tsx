@@ -41,7 +41,7 @@ const IpSearch = (props) => {
           />
         </Tippy>
         <button
-          onClick={() => router.push(`./ip/${ip}`)}
+          onClick={() => router.push(`/ip/${ip}`)}
           className="bg-green-400 text-white border font-semibold mt-2 w-24 h-10 shadow-md rounded-lg active:bg-green-600 focus:outline-none"
         >
           查询
