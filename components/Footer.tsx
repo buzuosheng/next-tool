@@ -1,14 +1,24 @@
+import React from 'react'
+
 const Footer = () => {
   return (
-    <footer className="mt-2 flex flex-row py-2 px-8 items-center h-14 overflow-hidden justify-center border-t border-gray-300 w-5/6 xl:mx-32">
-      create by
-      <a
-        target="_blank"
-        className="text-green-400 ml-4"
-        href="https://buzuosheng.com"
-      >
-        buzuosheng.com
-      </a>
+    <footer className="w-full border-t py-6 md:py-0">
+      <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row mx-auto px-4 md:px-8 text-sm text-muted-foreground">
+        <div className="flex flex-col items-center gap-4 md:flex-row md:gap-2 md:px-0">
+          <p className="text-center leading-loose md:text-left">
+            Built by{" "}
+            <a
+              href="https://buzuosheng.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              buzuosheng
+            </a>
+            .
+          </p>
+        </div>
+      </div>
     </footer>
   )
 }
