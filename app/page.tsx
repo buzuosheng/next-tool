@@ -125,6 +125,7 @@ export default function Home() {
                       src={`/images/${tool.icon}.jpg`}
                       alt={tool.title}
                       fill
+                      sizes="48px"
                       className="object-cover rounded-md"
                     />
                   </div>
