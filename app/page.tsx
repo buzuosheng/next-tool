@@ -15,6 +15,8 @@ import {
   QrCode, 
   Globe, 
   Code2,
+  FileJson,
+  KeyRound,
   LucideIcon
 } from 'lucide-react'
 
@@ -27,6 +29,18 @@ interface Tool {
 }
 
 const tools: Tool[] = [
+  {
+    icon: FileJson,
+    title: 'JSON 格式化',
+    desc: 'JSON 数据美化、压缩、校验与格式转换工具',
+    url: 'json'
+  },
+  {
+    icon: KeyRound,
+    title: 'UUID 生成器',
+    desc: '批量生成随机 UUID (v4) 唯一标识符',
+    url: 'uuid'
+  },
   {
     icon: Clock,
     title: 'Crontab 时间计算',
