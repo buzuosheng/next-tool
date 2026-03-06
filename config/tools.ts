@@ -11,9 +11,10 @@ import {
   QrCode,
   Globe,
   Code2,
+  Gamepad2,
 } from 'lucide-react'
 
-export type ToolCategory = '编码/解码' | '时间日期' | '网络工具' | '其他'
+export type ToolCategory = '编码/解码' | '时间日期' | '网络工具' | '外部作品' | '其他'
 
 export interface ToolItem {
   icon: LucideIcon
@@ -38,17 +39,25 @@ export const tools: ToolItem[] = [
   { icon: Globe, title: 'IP 地址查询', desc: '在线查询 IP 地址归属地及网络信息', url: 'ip', category: '网络工具' },
   { icon: QrCode, title: '二维码生成器', desc: '在线生成二维码，支持文本、网址等多种格式', url: 'qrcode', category: '其他' },
   {
+    icon: Gamepad2,
+    title: '猜数字',
+    desc: 'Bulls & Cows：猜出四位不重复数字，支持 B 简化版与 B+C 经典版',
+    url: 'https://bulls.buzuosheng.tech/',
+    category: '外部作品',
+    isExternal: true,
+  },
+  {
     icon: Code2,
     title: '代码段分享',
     desc: '生成精美的代码图片，便于分享和展示',
     url: 'https://carbon-buzuosheng.vercel.app/',
-    category: '其他',
+    category: '外部作品',
     isExternal: true,
     hidden: true, // 外链暂时失效，恢复后改为 false
   },
 ]
 
-export const categoryOrder: ToolCategory[] = ['编码/解码', '时间日期', '网络工具', '其他']
+export const categoryOrder: ToolCategory[] = ['编码/解码', '时间日期', '网络工具', '其他', '外部作品']
 
 /** 仅站内、未隐藏的工具路径，用于 sitemap 等 */
 export const toolPaths = tools
