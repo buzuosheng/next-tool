@@ -3,7 +3,7 @@ import Md5Tool from '@/components/tools/Md5Tool'
 
 export const metadata: Metadata = {
   title: 'MD5编码加密_前端武器库',
-  description: '使用md算法对字符串进行加密',
+  description: '使用 MD5 算法对字符串进行不可逆加密，在线工具',
   keywords: 'md5,hash,加密,前端,工具',
 }
 

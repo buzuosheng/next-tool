@@ -52,13 +52,14 @@ const IpTool: React.FC<IpToolProps> = ({ data }) => {
             <div className="flex w-full max-w-sm items-center space-x-2">
                 <Input
                     className="font-mono"
-                    placeholder="输入 IP 地址或域名"
+                    placeholder="输入 IP 地址或域名…"
                     value={ip}
                     onChange={(e) => setIp(e.target.value)}
                     onKeyDown={handleKeyDown}
+                    aria-label="IP 地址或域名"
                 />
-                <Button onClick={handleSearch}>
-                    <Search className="mr-2 h-4 w-4" />
+                <Button onClick={handleSearch} aria-label="查询 IP">
+                    <Search className="mr-2 h-4 w-4" aria-hidden />
                     查询
                 </Button>
             </div>

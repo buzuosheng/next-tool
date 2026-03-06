@@ -4,99 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  Search, 
-  Clock, 
-  Fingerprint, 
-  Radio, 
-  FileCode, 
-  Binary, 
-  CalendarClock, 
-  QrCode, 
-  Globe, 
-  Code2,
-  FileJson,
-  KeyRound,
-  LucideIcon
-} from 'lucide-react'
-
-interface Tool {
-  icon: LucideIcon
-  title: string
-  desc: string
-  url: string
-  isExternal?: boolean
-}
-
-const tools: Tool[] = [
-  {
-    icon: FileJson,
-    title: 'JSON 格式化',
-    desc: 'JSON 数据美化、压缩、校验与格式转换工具',
-    url: 'json'
-  },
-  {
-    icon: KeyRound,
-    title: 'UUID 生成器',
-    desc: '批量生成随机 UUID (v4) 唯一标识符',
-    url: 'uuid'
-  },
-  {
-    icon: Clock,
-    title: 'Crontab 时间计算',
-    desc: 'Crontab 时间表达式测试，计算循环任务的执行时间',
-    url: 'crontab'
-  },
-  {
-    icon: Fingerprint,
-    title: 'MD5 编码加密',
-    desc: '使用 MD5 算法对字符串进行不可逆加密',
-    url: 'md5'
-  },
-  {
-    icon: Radio,
-    title: '摩尔斯电码',
-    desc: '将文本信息转化为摩尔斯电码，支持双向转换',
-    url: 'morse'
-  },
-  {
-    icon: FileCode,
-    title: 'Base64 编码解码',
-    desc: '将文本信息使用 Base64 编码方式转码或解码',
-    url: 'base64'
-  },
-  {
-    icon: Binary,
-    title: '常用进制转换',
-    desc: '二进制、八进制、十进制、十六进制之间的快速转换',
-    url: 'binary'
-  },
-  {
-    icon: CalendarClock,
-    title: '时间戳转换',
-    desc: 'Unix 时间戳与日期时间的相互转换工具',
-    url: 'date'
-  },
-  {
-    icon: QrCode,
-    title: '二维码生成器',
-    desc: '在线生成二维码，支持文本、网址等多种格式',
-    url: 'qrcode'
-  },
-  {
-    icon: Globe,
-    title: 'IP 地址查询',
-    desc: '在线查询 IP 地址归属地及网络信息',
-    url: 'ip'
-  },
-  {
-    icon: Code2,
-    title: '代码段分享',
-    desc: '生成精美的代码图片，便于分享和展示',
-    url: 'https://carbon-buzuosheng.vercel.app/',
-    isExternal: true
-  }
-]
+import { Search } from 'lucide-react'
+import { tools } from '@/config/tools'
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -126,9 +35,10 @@ export default function Home() {
           </div>
           <Input 
             className="pl-10 h-12 text-lg shadow-sm focus-visible:ring-primary/20 transition-all" 
-            placeholder="搜索工具..." 
+            placeholder="搜索工具…" 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            aria-label="搜索工具"
           />
         </div>
       </section>
@@ -143,6 +53,7 @@ export default function Home() {
                 key={tool.title} 
                 href={tool.url} 
                 target={tool.isExternal ? "_blank" : undefined}
+                rel={tool.isExternal ? "noopener noreferrer" : undefined}
                 className="group block h-full"
               >
                 <Card className="h-full border-muted bg-card/50 hover:bg-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">

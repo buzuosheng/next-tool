@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { headers } from 'next/headers'
 import IpTool from '@/components/tools/IpTool'
-import axios from 'axios'
+import type { IpApiResponse } from '@/app/api/ip/route'
 
 export const metadata: Metadata = {
   title: 'IP地址查询_前端武器库',
@@ -9,23 +9,18 @@ export const metadata: Metadata = {
   keywords: 'ip, ip查询, 工具, 在线工具, 前端, 程序员, 武器库',
 }
 
-async function getIpData(ip: string) {
-    try {
-        const res = await axios.get(`http://ip-api.com/json/${ip}?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN`)
-        return res.data
-    } catch (e) {
-        return { status: 'fail', query: ip, message: 'Failed to fetch' }
-    }
+function getBaseUrl() {
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  return process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 }
 
 export default async function IpPage() {
   const headersList = await headers()
-  const ip = headersList.get('x-real-ip') || headersList.get('x-forwarded-for') || ''
-  console.log('ip', ip)
-  // Clean up IP if multiple (x-forwarded-for can be comma separated)
-  const clientIp = ip.split(',')[0].trim()
-  
-  const data = await getIpData(clientIp)
+  const forwarded = headersList.get('x-real-ip') || headersList.get('x-forwarded-for') || ''
+  const clientIp = forwarded.split(',')[0].trim()
+  const url = clientIp ? `${getBaseUrl()}/api/ip?ip=${encodeURIComponent(clientIp)}` : `${getBaseUrl()}/api/ip`
+  const res = await fetch(url, { cache: 'no-store' })
+  const data: IpApiResponse = res.ok ? await res.json() : { status: 'fail', query: clientIp || '', message: 'Failed to fetch' }
 
   return (
     <div className="w-full flex flex-col items-center p-4">

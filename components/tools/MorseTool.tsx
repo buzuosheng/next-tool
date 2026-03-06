@@ -11,7 +11,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 
 const MorseTool = () => {
-  const initRes = 'Encoded text will appear here..'
+  const initRes = '摩尔斯电码将显示在此…'
   const [str, setStr] = useState('')
   const [result, setResult] = useState(initRes)
   const { toast } = useToast()
@@ -34,8 +34,8 @@ const MorseTool = () => {
   const handleCopy = () => {
     copy(result)
     toast({
-      title: "Copied!",
-      description: "Morse code copied to clipboard",
+      title: "已复制",
+      description: "摩尔斯电码已复制到剪贴板",
       duration: 2000,
     })
   }
@@ -64,21 +64,23 @@ const MorseTool = () => {
         <Card className="w-full lg:w-2/3">
           <CardContent className="p-6 space-y-6">
             <div className="space-y-2">
-              <Label className="text-lg font-medium">Your Text</Label>
+              <Label className="text-lg font-medium">输入文本</Label>
               <Textarea
                 className="min-h-[150px] resize-none"
-                placeholder="Enter your text here.."
+                placeholder="在此输入或粘贴文本…"
+                aria-label="输入文本"
                 value={str}
                 onChange={handleInputChange}
               />
             </div>
             
             <div className="space-y-2">
-              <Label className="text-lg font-medium">Morse Code</Label>
+              <Label className="text-lg font-medium">摩尔斯电码</Label>
               <Textarea
                 disabled
                 className="min-h-[150px] resize-none bg-muted font-mono"
                 value={result}
+                aria-label="摩尔斯电码结果"
               />
             </div>
 
@@ -87,20 +89,23 @@ const MorseTool = () => {
                 variant="outline" 
                 onClick={handleClear}
                 className="w-24"
+                aria-label="清空输入"
               >
-                Clear
+                清空
               </Button>
               <Button 
                 onClick={handleCopy}
                 className="w-24"
+                aria-label="复制结果"
               >
-                Copy
+                复制
               </Button>
                <Button 
                 onClick={handleDecode}
                 className="w-24"
+                aria-label="解码"
               >
-                Decode
+                解码
               </Button>
             </div>
           </CardContent>

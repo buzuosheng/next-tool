@@ -49,21 +49,22 @@ const QrTool = () => {
       <div className="flex flex-col lg:flex-row gap-6">
         <Card className="w-full lg:w-1/2">
            <CardHeader>
-              <CardTitle>Configuration</CardTitle>
+              <CardTitle>配置</CardTitle>
            </CardHeader>
            <CardContent className="space-y-4">
               <div className="space-y-2">
-                 <Label>Content</Label>
+                 <Label>内容</Label>
                  <Input 
                     value={content} 
                     onChange={(e) => setContent(e.target.value)} 
-                    placeholder="Enter URL or text"
+                    placeholder="输入网址或文本…"
+                    aria-label="二维码内容"
                  />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                  <div className="space-y-2">
-                    <Label>Render Mode</Label>
+                    <Label>渲染模式</Label>
                     <Select value={mode} onValueChange={setMode}>
                        <SelectTrigger>
                           <SelectValue />
@@ -75,7 +76,7 @@ const QrTool = () => {
                     </Select>
                  </div>
                  <div className="space-y-2">
-                    <Label>Size (px)</Label>
+                    <Label>尺寸 (px)</Label>
                     <Input 
                        type="number" 
                        value={size} 
@@ -88,18 +89,18 @@ const QrTool = () => {
 
               <div className="grid grid-cols-2 gap-4">
                  <div className="space-y-2">
-                    <Label>Foreground Color</Label>
+                    <Label>前景色</Label>
                     <Input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="h-10 px-2" />
                  </div>
                  <div className="space-y-2">
-                    <Label>Background Color</Label>
+                    <Label>背景色</Label>
                     <Input type="color" value={bg} onChange={(e) => setBg(e.target.value)} className="h-10 px-2" />
                  </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 items-center">
                  <div className="space-y-2">
-                    <Label>Error Correction Level</Label>
+                    <Label>纠错等级</Label>
                     <Select value={level} onValueChange={(val) => setLevel(val as QrLevel)}>
                        <SelectTrigger>
                           <SelectValue />
@@ -114,14 +115,14 @@ const QrTool = () => {
                  </div>
                  <div className="flex items-center space-x-2 pt-6">
                     <Switch id="padding" checked={pad} onCheckedChange={setPad} />
-                    <Label htmlFor="padding">Include Margin</Label>
+                    <Label htmlFor="padding">包含边距</Label>
                  </div>
               </div>
 
               <div className="pt-4 border-t space-y-4">
-                 <Label className="text-base font-semibold">Logo Settings</Label>
+                 <Label className="text-base font-semibold">Logo 设置</Label>
                  <div className="space-y-2">
-                    <Label>Logo URL</Label>
+                    <Label>Logo 地址</Label>
                     <Input 
                        value={logoUrl} 
                        onChange={(e) => setLogoUrl(e.target.value)} 
@@ -130,23 +131,23 @@ const QrTool = () => {
                  </div>
                  <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                       <Label>Width (px)</Label>
+                       <Label>宽度 (px)</Label>
                        <Input type="number" value={logoW} onChange={(e) => setLogoW(e.target.value)} />
                     </div>
                     <div className="space-y-2">
-                       <Label>Height (px)</Label>
+                       <Label>高度 (px)</Label>
                        <Input type="number" value={logoH} onChange={(e) => setLogoH(e.target.value)} />
                     </div>
                  </div>
               </div>
               
-              <Button variant="outline" onClick={handleClear} className="w-full">Reset Configuration</Button>
+              <Button variant="outline" onClick={handleClear} className="w-full" aria-label="重置配置">重置配置</Button>
            </CardContent>
         </Card>
 
         <Card className="w-full lg:w-1/2 h-fit sticky top-4">
            <CardHeader>
-              <CardTitle className="text-center">Preview</CardTitle>
+              <CardTitle className="text-center">预览</CardTitle>
            </CardHeader>
            <CardContent className="flex flex-col items-center justify-center p-8 space-y-8 bg-muted/20">
               <div className="bg-white p-4 rounded shadow-sm">

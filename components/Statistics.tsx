@@ -11,19 +11,19 @@ const Statistics = ({ text }: StatisticsProps) => {
     <ul className="flex flex-row flex-wrap">
       <li className="border-b text-center pb-2 mb-3 text-base w-1/2">
         <strong className="block">{words}</strong>
-        <span className="text-muted-foreground">Words</span>
+        <span className="text-muted-foreground">词数</span>
       </li>
       <li className="border-b text-center pb-2 mb-3 text-base w-1/2">
         <strong className="block">{chars}</strong>
-        <span className="text-muted-foreground">Characters</span>
+        <span className="text-muted-foreground">字符数</span>
       </li>
       <li className="border-b text-center pb-2 mb-3 text-base w-1/2">
         <strong className="block">{sens}</strong>
-        <span className="text-muted-foreground">Sentences</span>
+        <span className="text-muted-foreground">句子数</span>
       </li>
       <li className="border-b text-center pb-2 mb-3 text-base w-1/2">
         <strong className="block">{wspace}</strong>
-        <span className="text-muted-foreground">Whitespaces</span>
+        <span className="text-muted-foreground">空格数</span>
       </li>
     </ul>
   )

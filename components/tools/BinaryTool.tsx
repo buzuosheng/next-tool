@@ -26,8 +26,8 @@ const BinaryTool = () => {
     if (val && (isNaN(radix) || radix < 2 || radix > 36)) {
        toast({
          variant: "destructive",
-         title: "Invalid Radix",
-         description: "Radix must be an integer between 2 and 36",
+         title: "无效进制",
+         description: "进制须为 2 到 36 之间的整数",
        })
     }
   }
@@ -44,25 +44,26 @@ const BinaryTool = () => {
     <div className="w-full max-w-4xl mx-auto my-8 p-4">
       <Card>
         <CardHeader>
-           <CardTitle className="text-center">Decimal Converter</CardTitle>
+           <CardTitle className="text-center">进制转换</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <span className="text-lg font-medium">Decimal Number:</span>
+              <span className="text-lg font-medium">十进制数：</span>
               <Input
                 className="font-mono text-center text-lg max-w-xs"
                 value={num}
                 onChange={(e) => setNum(e.target.value)}
-                placeholder="Enter a number"
+                placeholder="输入数字"
                 type="number"
+                aria-label="十进制数"
               />
            </div>
 
            <Table>
               <TableHeader>
                  <TableRow>
-                    <TableHead className="text-center w-1/2">Radix</TableHead>
-                    <TableHead className="text-center w-1/2">Result</TableHead>
+<TableHead className="text-center w-1/2">进制</TableHead>
+                 <TableHead className="text-center w-1/2">结果</TableHead>
                  </TableRow>
               </TableHeader>
               <TableBody>
@@ -85,7 +86,7 @@ const BinaryTool = () => {
                  <TableRow>
                     <TableCell className="text-center font-medium">
                        <div className="flex items-center justify-center gap-2">
-                          <span>Custom Base</span>
+                          <span>自定义进制</span>
                           <Input 
                             className="w-16 h-8 text-center" 
                             value={customRadix}

@@ -8,6 +8,11 @@ export const metadata: Metadata = {
 }
 
 export default function BinaryPage() {
-  return <BinaryTool />
+  return (
+    <div className="w-full flex flex-col items-center p-4">
+      <h1 className="text-2xl font-bold my-4">常用进制转换</h1>
+      <BinaryTool />
+    </div>
+  )
 }
 

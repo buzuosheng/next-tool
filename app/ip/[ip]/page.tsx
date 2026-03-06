@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import IpTool from '@/components/tools/IpTool'
-import axios from 'axios'
+import type { IpApiResponse } from '@/app/api/ip/route'
 
 export const metadata: Metadata = {
   title: 'IP地址查询_前端武器库',
@@ -8,17 +8,22 @@ export const metadata: Metadata = {
   keywords: 'ip, ip查询, 工具, 在线工具, 前端, 程序员, 武器库',
 }
 
-async function getIpData(ip: string) {
-    try {
-        const res = await axios.get(`http://ip-api.com/json/${ip}?fields=status,message,country,regionName,city,zip,isp,reverse,query&lang=zh-CN`)
-        return res.data
-    } catch (e) {
-        return { status: 'fail', query: ip, message: 'Failed to fetch' }
-    }
+function getBaseUrl() {
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  return process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+}
+
+async function getIpData(ip: string): Promise<IpApiResponse> {
+  const base = getBaseUrl()
+  const res = await fetch(`${base}/api/ip?ip=${encodeURIComponent(ip)}`, {
+    cache: 'no-store',
+  })
+  if (!res.ok) return { status: 'fail', query: ip, message: 'Failed to fetch' }
+  return res.json()
 }
 
 interface PageProps {
-    params: Promise<{ ip: string }>
+  params: Promise<{ ip: string }>
 }
 
 export default async function IpDetailPage({ params }: PageProps) {

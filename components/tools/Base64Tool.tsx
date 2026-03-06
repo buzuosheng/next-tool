@@ -24,7 +24,7 @@ const Uint8ArrayToString = (fileData: Uint8Array) => {
 }
 
 const Base64Tool: React.FC = () => {
-  const initRes = 'Encoded/Decoded text will appear here..'
+  const initRes = '编码或解码结果将显示在此…'
   const [str, setStr] = useState('')
   const [result, setResult] = useState(initRes)
   const { toast } = useToast()
@@ -52,8 +52,8 @@ const Base64Tool: React.FC = () => {
     if (result && result !== initRes) {
       copy(result)
       toast({
-        title: "Copied!",
-        description: "Result copied to clipboard.",
+        title: "已复制",
+        description: "结果已复制到剪贴板",
       })
     }
   }
@@ -64,8 +64,8 @@ const Base64Tool: React.FC = () => {
         const decoded = Uint8ArrayToString(base64.toByteArray(str))
         setResult(decoded)
         toast({
-            title: "Success",
-            description: "Decoded successfully.",
+            title: "解码成功",
+            description: "已解码",
         })
       } else {
         setResult(initRes)
@@ -73,8 +73,8 @@ const Base64Tool: React.FC = () => {
     } catch (error: any) {
        toast({
         variant: "destructive",
-        title: "Error",
-        description: error.message || "Invalid Base64 string",
+        title: "错误",
+        description: error.message || "无效的 Base64 字符串",
       })
     }
   }
@@ -84,11 +84,11 @@ const Base64Tool: React.FC = () => {
       <Card className="flex-1">
         <CardContent className="p-6 space-y-4">
             <div className="space-y-2">
-                <Label htmlFor="input">Your Text</Label>
+                <Label htmlFor="input">输入文本</Label>
                 <Textarea
                     id="input"
                     className="min-h-[200px] resize-none font-mono"
-                    placeholder="Enter your text here.."
+                    placeholder="在此输入或粘贴文本…"
                     value={str}
                     onChange={(e) => setStr(e.target.value)}
                 />
@@ -99,12 +99,12 @@ const Base64Tool: React.FC = () => {
                     variant="outline" 
                     onClick={() => setStr('')}
                 >
-                    Clear
+                    清空
                 </Button>
                 <Button 
                     onClick={handleDecode}
                 >
-                    Decode
+                    解码
                 </Button>
             </div>
         </CardContent>
@@ -113,14 +113,15 @@ const Base64Tool: React.FC = () => {
       <div className="flex-1 flex flex-col gap-4">
         <Card className="flex-1">
              <CardContent className="p-6 space-y-4 h-full flex flex-col">
-                <Label>Result</Label>
+                <Label>结果</Label>
                 <Textarea 
                     readOnly
                     className="flex-1 min-h-[200px] bg-muted font-mono"
                     value={result}
+                    aria-label="编码或解码结果"
                 />
-                <Button onClick={handleCopy} disabled={result === initRes}>
-                    Copy Result
+                <Button onClick={handleCopy} disabled={result === initRes} aria-label="复制结果">
+                    复制结果
                 </Button>
              </CardContent>
         </Card>

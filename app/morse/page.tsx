@@ -8,6 +8,11 @@ export const metadata: Metadata = {
 }
 
 export default function MorsePage() {
-  return <MorseTool />
+  return (
+    <div className="w-full flex flex-col items-center p-4">
+      <h1 className="text-2xl font-bold my-4">摩尔斯电码</h1>
+      <MorseTool />
+    </div>
+  )
 }
 

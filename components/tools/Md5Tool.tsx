@@ -11,7 +11,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 
 const Md5Tool = () => {
-  const initRes = 'Encoded text will appear here..'
+  const initRes = 'MD5 哈希将显示在此…'
   const [str, setStr] = useState('')
   const [result, setResult] = useState(initRes)
   const { toast } = useToast()
@@ -34,8 +34,8 @@ const Md5Tool = () => {
   const handleCopy = () => {
     copy(result)
     toast({
-      title: "Copied!",
-      description: "MD5 hash copied to clipboard",
+      title: "已复制",
+      description: "MD5 哈希已复制到剪贴板",
       duration: 2000,
     })
   }
@@ -46,21 +46,23 @@ const Md5Tool = () => {
         <Card className="w-full lg:w-2/3">
           <CardContent className="p-6 space-y-6">
             <div className="space-y-2">
-              <Label className="text-lg font-medium">Your Text</Label>
+              <Label className="text-lg font-medium">输入文本</Label>
               <Textarea
                 className="min-h-[150px] resize-none"
-                placeholder="Enter your text here.."
+                placeholder="在此输入或粘贴文本…"
+                aria-label="输入文本"
                 value={str}
                 onChange={handleInputChange}
               />
             </div>
             
             <div className="space-y-2">
-              <Label className="text-lg font-medium">MD5 Hash</Label>
+              <Label className="text-lg font-medium">MD5 哈希</Label>
               <Textarea
                 disabled
                 className="min-h-[150px] resize-none bg-muted font-mono"
                 value={result}
+                aria-label="MD5 哈希结果"
               />
             </div>
 
@@ -69,14 +71,16 @@ const Md5Tool = () => {
                 variant="outline" 
                 onClick={handleClear}
                 className="w-24"
+                aria-label="清空输入"
               >
-                Clear
+                清空
               </Button>
               <Button 
                 onClick={handleCopy}
                 className="w-24"
+                aria-label="复制结果"
               >
-                Copy
+                复制
               </Button>
             </div>
           </CardContent>

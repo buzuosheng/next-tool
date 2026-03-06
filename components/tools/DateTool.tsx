@@ -106,7 +106,7 @@ const DateTool = () => {
     return (
       <div className="w-full max-w-4xl mx-auto my-8 p-4">
         <Card>
-           <CardHeader><CardTitle className="text-center">Loading...</CardTitle></CardHeader>
+           <CardHeader><CardTitle className="text-center">加载中…</CardTitle></CardHeader>
         </Card>
       </div>
     )
@@ -129,8 +129,8 @@ const DateTool = () => {
                  <Label className="text-muted-foreground mb-2">时间戳 (秒)</Label>
                  <div className="flex items-center gap-2">
                     <span className="text-2xl font-mono">{Math.floor(now.getTime() / 1000)}</span>
-                    <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => copyToClipboard(Math.floor(now.getTime() / 1000).toString())}>
-                      <Copy className="h-3 w-3" />
+                    <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => copyToClipboard(Math.floor(now.getTime() / 1000).toString())} aria-label="复制秒级时间戳">
+                      <Copy className="h-3 w-3" aria-hidden />
                     </Button>
                  </div>
               </div>
@@ -138,8 +138,8 @@ const DateTool = () => {
                  <Label className="text-muted-foreground mb-2">时间戳 (毫秒)</Label>
                  <div className="flex items-center gap-2">
                     <span className="text-2xl font-mono">{now.getTime()}</span>
-                    <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => copyToClipboard(now.getTime().toString())}>
-                      <Copy className="h-3 w-3" />
+                    <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => copyToClipboard(now.getTime().toString())} aria-label="复制毫秒时间戳">
+                      <Copy className="h-3 w-3" aria-hidden />
                     </Button>
                  </div>
               </div>
@@ -164,7 +164,7 @@ const DateTool = () => {
                   <Input 
                     value={timestamp} 
                     onChange={(e) => handleTimestampChange(e.target.value)}
-                    placeholder="输入时间戳..."
+                    placeholder="输入时间戳…"
                     className="font-mono"
                   />
                   <Select value={unit} onValueChange={(val: 's' | 'ms') => setUnit(val)}>
@@ -192,8 +192,9 @@ const DateTool = () => {
                     className="absolute right-1 top-1 h-8 w-8"
                     onClick={() => copyToClipboard(tsToDateRes)}
                     disabled={!tsToDateRes}
+                    aria-label="复制转换结果"
                   >
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-4 w-4" aria-hidden />
                   </Button>
                 </div>
              </div>
@@ -246,8 +247,9 @@ const DateTool = () => {
                         className="absolute right-0 top-0 h-9 w-8"
                         onClick={() => copyToClipboard(dateToTsResSec)}
                         disabled={!dateToTsResSec}
+                        aria-label="复制秒时间戳"
                       >
-                        <Copy className="h-3 w-3" />
+                        <Copy className="h-3 w-3" aria-hidden />
                       </Button>
                    </div>
                 </div>
@@ -265,8 +267,9 @@ const DateTool = () => {
                         className="absolute right-0 top-0 h-9 w-8"
                         onClick={() => copyToClipboard(dateToTsResMs)}
                         disabled={!dateToTsResMs}
+                        aria-label="复制毫秒时间戳"
                       >
-                        <Copy className="h-3 w-3" />
+                        <Copy className="h-3 w-3" aria-hidden />
                       </Button>
                    </div>
                 </div>
