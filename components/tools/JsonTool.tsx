@@ -73,7 +73,7 @@ export default function JsonTool() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[calc(100vh-200px)] min-h-[500px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-[400px] lg:min-h-[calc(100vh-200px)]">
         <div className="flex flex-col space-y-2 h-full">
           <div className="flex justify-between items-center">
             <span className="text-sm font-medium text-muted-foreground">输入 JSON</span>
